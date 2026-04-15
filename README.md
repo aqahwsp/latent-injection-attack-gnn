@@ -57,7 +57,6 @@
 
 ```text
 .
-├── main_DNN_1_updated.py
 ├── main_ablation_prelude_updated.py
 ├── PatchTrainerGNN_DNN_1_updated.py
 ├── attack_evaluation_updated.py
@@ -68,30 +67,7 @@
 └── utils.py
 ```
 
-### 3.1 `main_DNN_1_updated.py`
-
-主实验脚本，用于完整执行研究内容一的主要流程，包括：
-
-- 数据集加载
-- 干净模型训练
-- 潜伏攻击 patch 训练
-- 抑制节点 / trigger 节点联合训练
-- 攻击评估与结果输出
-
-从脚本内容看，该文件支持：
-
-- 数据集名称标准化与自动加载
-- GAT / GCN 两类骨干模型选择
-- patch 节点数与 trigger 比例配置
-- 多组实验参数控制
-- 自动处理无验证集场景下的 fallback clean training
-- 数据集按 `7:0:3` 划分 train / val / test
-
-适合作为**主入口文件**运行完整攻击实验。
-
----
-
-### 3.2 `main_ablation_prelude_updated.py`
+### 3.1 `main_ablation_prelude_updated.py`
 
 消融实验主脚本，主要用于研究**攻击抑制节点（prelude / suppressor）**相关机制对攻击效果的影响。
 
@@ -106,9 +82,10 @@
 
 如果你要复现实验中“抑制器规模”“触发比例”“数据集差异”这类结果，这个脚本是主要入口。
 
+适合作为**主入口文件**运行完整攻击实验。
 ---
 
-### 3.3 `PatchTrainerGNN_DNN_1_updated.py`
+### 3.2 `PatchTrainerGNN_DNN_1_updated.py`
 
 该文件是本项目最核心的攻击训练模块，实现了**共享式 patch 生成器**与**两阶段攻击结构构造逻辑**，包括：
 
@@ -138,7 +115,7 @@
 
 ---
 
-### 3.4 `attack_evaluation_updated.py`
+### 3.3 `attack_evaluation_updated.py`
 
 该文件负责统一攻击评估与防御评估，主要功能包括：
 
@@ -160,7 +137,7 @@
 
 ---
 
-### 3.5 `preprocess.py`
+### 3.4 `preprocess.py`
 
 数据预处理模块，负责：
 
@@ -182,7 +159,7 @@
 
 ---
 
-### 3.6 `models.py`
+### 3.5 `models.py`
 
 定义项目中使用的图分类模型，包括：
 
@@ -200,7 +177,7 @@
 
 ---
 
-### 3.7 `train_clean_gat.py` / `train_clean_gcn.py`
+### 3.6 `train_clean_gat.py` / `train_clean_gcn.py`
 
 两个文件分别用于训练干净的 GAT 与 GCN 模型，主要负责：
 
@@ -214,7 +191,7 @@
 
 ---
 
-### 3.8 `utils.py`
+### 3.7 `utils.py`
 
 通用工具函数，包括：
 
